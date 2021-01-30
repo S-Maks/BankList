@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+</head>
+<body>
+<div class="table-container-user">
+    <table>
+        <thead>
+        <tr>
+            <th class="a-link-no-margin">Id</th>
+            <th class="a-link-no-margin">Имя</th>
+            <th class="a-link-no-margin">Фамилия</th>
+            <th class="a-link-no-margin">Счёт</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td><a th:text="${user.userid}"></a></td>
+            <td th:utext="${user.name}" class="a-link-no-margin"></td>
+            <td th:utext="${user.sureName}" class="a-link-no-margin"></td>
+            <td th:utext="${#aggregates.sum(user.accountList.![account])}" class="a-link-no-margin"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -13,20 +13,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "`user`")
+@Table(name = "users", schema = "public", catalog = "bank")
 public class User {
     @Id
-    @Column(name = "userid")
+    @Column(name = "iduser")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userid;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "surename")
+    @Column(name = "surname")
     private String sureName;
 
-    @OneToMany
-    @JoinColumn(name = "accountid")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    //@JoinColumn(name = "iduser")
     private List<Account> accountList;
 }
