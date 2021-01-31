@@ -22,7 +22,7 @@ public class Account {
     @Column(name = "account")
     private int account;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "iduser")
     private User user;
 }

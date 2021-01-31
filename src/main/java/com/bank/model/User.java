@@ -26,7 +26,15 @@ public class User {
     @Column(name = "surname")
     private String sureName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    //@JoinColumn(name = "iduser")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Account> accountList;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userid=" + userid +
+                ", name='" + name + '\'' +
+                ", sureName='" + sureName + '\'' +
+                '}';
+    }
 }
